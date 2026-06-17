@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matemáticas Prepa</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===== PANTALLA INICIO ===== -->
+  <div id="screen-home" class="screen active">
+    <div class="home-container">
+      <div class="home-icon">📐</div>
+      <h1>Matemáticas Prepa</h1>
+      <p class="home-subtitle">Números reales · Sucesiones · Límites · Derivadas</p>
+
+      <div class="level-grid">
+        <div class="level-card" onclick="startGame(1)">
+          <div class="level-emoji">🌱</div>
+          <div class="level-name">Básico</div>
+          <div class="level-desc">Conceptos y fórmulas</div>
+          <span class="badge badge-success">Nivel 1</span>
+        </div>
+        <div class="level-card" onclick="startGame(2)">
+          <div class="level-emoji">⚡</div>
+          <div class="level-name">Intermedio</div>
+          <div class="level-desc">Cálculo y aplicación</div>
+          <span class="badge badge-warn">Nivel 2</span>
+        </div>
+        <div class="level-card" onclick="startGame(3)">
+          <div class="level-emoji">🔥</div>
+          <div class="level-name">Avanzado</div>
+          <div class="level-desc">Problemas complejos</div>
+          <span class="badge badge-danger">Nivel 3</span>
+        </div>
+      </div>
+
+      <p class="home-hint">10 preguntas · 20 segundos por pregunta</p>
+    </div>
+  </div>
+
+  <!-- ===== PANTALLA JUEGO ===== -->
+  <div id="screen-game" class="screen">
+    <div class="hud">
+      <span id="q-counter" class="badge badge-info">1 / 10</span>
+      <div class="score-box">
+        <span class="score-label">Puntos:</span>
+        <span id="score-live">0</span>
+      </div>
+      <span id="timer-label" class="timer-label">⏱ 20s</span>
+    </div>
+
+    <div class="timer-bar">
+      <div id="timer-fill" class="timer-fill"></div>
+    </div>
+
+    <div class="progress-dots" id="progress-dots"></div>
+
+    <div class="card">
+      <div class="q-meta">
+        <span id="q-topic" class="badge badge-info">Tema</span>
+        <span id="q-type" class="q-type-label">tipo</span>
+      </div>
+      <p id="q-text" class="q-text"></p>
+
+      <div id="q-formula" class="formula-box" style="display:none"></div>
+      <div id="q-graph" class="graph-area" style="display:none">
+        <canvas id="mini-chart" width="320" height="160"></canvas>
+      </div>
+
+      <div id="q-options"></div>
+
+      <div id="q-fill" class="fill-row" style="display:none">
+        <input id="fill-input" class="fill-blank" placeholder="?" />
+        <button class="btn btn-primary" onclick="checkFill()">Verificar</button>
+      </div>
+
+      <div id="q-explanation" class="explanation"></div>
+    </div>
+  </div>
+
+  <!-- ===== PANTALLA RESULTADO ===== -->
+  <div id="screen-result" class="screen">
+    <div class="result-container">
+      <div id="res-emoji" class="res-emoji">🎉</div>
+      <h2>¡Juego terminado!</h2>
+
+      <div class="result-grid">
+        <div class="card result-stat">
+          <div id="res-score" class="stat-num">0</div>
+          <div class="stat-label">Puntos</div>
+        </div>
+        <div class="card result-stat">
+          <div id="res-correct" class="stat-num stat-correct">0</div>
+          <div class="stat-label">Correctas</div>
+        </div>
+        <div class="card result-stat">
+          <div id="res-wrong" class="stat-num stat-wrong">0</div>
+          <div class="stat-label">Incorrectas</div>
+        </div>
+      </div>
+
+      <p id="res-msg" class="res-msg"></p>
+
+      <div class="result-btns">
+        <button class="btn btn-primary" onclick="showHome()">Volver al inicio</button>
+        <button class="btn" onclick="restartSameLevel()">Repetir nivel</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
